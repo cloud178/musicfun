@@ -1,11 +1,11 @@
 import { useDeletePlaylistMutation, useFetchPlaylistsQuery } from '@/features/playlists/api/playlistsApi.ts'
 import s from './PlaylistsPage.module.css'
-import { CreatePlaylistForm } from '@/features/playlists/ui/PlaylistsPage/CreatePlaylistForm/CreatePlaylistForm.tsx'
+import { CreatePlaylistForm } from '@/features/playlists/ui/CreatePlaylistForm/CreatePlaylistForm.tsx'
 import { useForm } from 'react-hook-form'
 import type { PlaylistData, UpdatePlaylistArgs } from '@/features/playlists/api/playlistsApi.types.ts'
 import { useState } from 'react'
-import { PlaylistItem } from '@/features/playlists/ui/PlaylistsPage/PlaylistItem/PlaylistItem.tsx'
-import { EditPlaylistForm } from '@/features/playlists/ui/PlaylistsPage/editPlaylistForm/EditPlaylistForm.tsx'
+import { PlaylistItem } from '@/features/playlists/ui/PlaylistItem/PlaylistItem.tsx'
+import { EditPlaylistForm } from '@/features/playlists/ui/editPlaylistForm/EditPlaylistForm.tsx'
 
 export const PlaylistsPage = () => {
   const [playlistId, setPlaylistId] = useState<string | null>(null)
