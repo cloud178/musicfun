@@ -12,11 +12,18 @@ export const PlaylistsPage = () => {
   const [pageSize, setPageSize] = useState(2)
 
   const debounceSearch = useDebounceValue(search)
-  const { data, isLoading } = useFetchPlaylistsQuery({
-    search: debounceSearch,
-    pageNumber: currentPage,
-    pageSize,
-  })
+  const { data, isLoading } = useFetchPlaylistsQuery(
+    {
+      search: debounceSearch,
+      pageNumber: currentPage,
+      pageSize,
+    },
+    {
+      refetchOnFocus: false, // Опциональное свойство, что за он смотри в baseApi, там оставил комментарий
+      // pollingInterval: 5000, // каждые столько-то миллисекунд заново делать запрос. Примеры: график котировки акций, где нужно обновление скажем каждые три секунды
+      // skipPollingIfUnfocused: true, // когда мы не на этой вкладке, прекратить делать polling
+    },
+  )
 
   const changePageSizeHandler = (size: number) => {
     setCurrentPage(1)

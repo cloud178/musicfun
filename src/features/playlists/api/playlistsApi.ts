@@ -13,6 +13,7 @@ export const playlistsApi = baseApi.injectEndpoints({
     fetchPlaylists: build.query<PlaylistsResponse, FetchPlaylistsArgs>({
       query: (params) => ({ url: 'playlists', params }),
       providesTags: ['playlist'],
+      keepUnusedDataFor: 60, // Опциональное свойство. Локальное свойство только на эту апи. Можно задавать глобальное значение в baseApi. Время жизни кэша. Например мы сделали запрос, и данные сохранятся, если мы повторно их запросим, они возьмутся из кэша. Живут по-умолчанию 60сек, будут жить столько сколько мы задали. В baseApi про это ещё расписано
     }),
     createPlaylist: build.mutation<{ data: PlaylistData }, CreatePlaylistArgs>({
       query: (body) => ({
